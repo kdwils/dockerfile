@@ -49,11 +49,7 @@ type Command struct {
 
 // String formats the docker command back to a string
 func (c *Command) String() string {
-	if c == nil {
-		return ""
-	}
-
-	cmd := c.Command
+	cmd := strings.ToUpper(c.Command)
 	if len(c.Flags) != 0 {
 		cmd = formatLine(cmd, c.Flags)
 	}
@@ -66,8 +62,6 @@ func (c *Command) String() string {
 }
 
 func formatLine(cmd string, values []string) string {
-	cmd = strings.ToUpper(cmd)
-
 	if len(values) == 0 {
 		return cmd
 	}
@@ -110,7 +104,7 @@ func (d *Dockerfile) SetBaseImageTag(tag string) error {
 
 // WriteContents writes the commands of the dockerfile to the provided writer
 func (d *Dockerfile) WriteContents(w io.Writer) error {
-	var line = 1
+	line := 1
 	contents := make([]string, 0)
 
 	for _, c := range d.Commands {

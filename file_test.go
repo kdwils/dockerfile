@@ -59,7 +59,7 @@ func Test_formatLine(t *testing.T) {
 		{
 			name: "entrypoint",
 			args: args{
-				cmd:    "entrypoint",
+				cmd:    "ENTRYPOINT",
 				values: []string{"./my-binary", "run"},
 			},
 			want: `ENTRYPOINT ["./my-binary", "run"]`,
@@ -139,7 +139,7 @@ func TestDockerfile_SetBaseImageTag(t *testing.T) {
 					},
 					{
 						Command: "FROM",
-						Values:  []string{"base-image:1.2.3 as something"},
+						Values:  []string{"base-image:1.2.3"},
 					},
 				},
 			},
@@ -157,7 +157,7 @@ func TestDockerfile_SetBaseImageTag(t *testing.T) {
 					},
 					{
 						Command: "FROM",
-						Values:  []string{"base-image:1.2.4 as something"},
+						Values:  []string{"base-image:1.2.4"},
 					},
 				},
 			},
