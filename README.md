@@ -9,18 +9,19 @@ Behind the scenes, this package is wrapped around buildkit's dockerfile parser, 
 Example of how to parse the contents of a dockerfile
 ```golang
 import (
+    "bytes"
+	"io"
     "log"
-    "os"
+	"os"
 
     "github.com/kdwils/dockerfile"
 )
-
-f, err := os.ReadFile("Dockerfile")
+b, err := os.ReadFile("Dockerfile")
 if err != nil {
     // handle err
 }
 
-d, err := dockerfile.ParseFromReader(f)
+d, err := dockerfile.ParseFromReader(bytes.NewReder(b))
 if err != nil {
     // handle err
 }
