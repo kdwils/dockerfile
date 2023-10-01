@@ -10,9 +10,9 @@ Example of how to parse the contents of a dockerfile
 ```golang
 import (
     "bytes"
-	"io"
+    "io"
     "log"
-	"os"
+    "os"
 
     "github.com/kdwils/dockerfile"
 )
